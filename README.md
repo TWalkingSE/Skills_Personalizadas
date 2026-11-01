@@ -1,11 +1,11 @@
 # Skills de Investigação, Segurança e Redação — Guia de Uso
 
-Este guia explica como usar, no Claude, as nove skills instaladas a partir dos pacotes abaixo: o que cada uma faz, quando ela entra em ação, como formular o pedido e o que esperar como resultado.
+Este guia explica como usar, no Claude, as dez skills instaladas a partir dos pacotes abaixo: o que cada uma faz, quando ela entra em ação, como formular o pedido e o que esperar como resultado.
 
 | Skill | Pacote | Versão interna | Em uma frase |
 |---|---|---|---|
-| **Análise IP** (`analise-ip`) | `Analise ip-v1.zip` | — | Análise técnica, forense e de inteligência de endereços IPv4/IPv6 |
-| **Crypto Investigator** (`crypto-investigator`) | `Crypto investigator-v1.zip` | v3.2 | Rastreamento on-chain de criptoativos e persecução patrimonial no Brasil |
+| **Análise IP Intelligence** (`analise-ip-intelligence`) | — | — | Análise técnica, forense e de inteligência de endereços IPv4/IPv6, com tipologia do IP e roteiro investigativo |
+| **Crypto Investigator** (`crypto-investigator`) | `Crypto investigator-v1.zip` | v4.0 | Rastreamento on-chain de criptoativos, atribuição e persecução patrimonial no Brasil |
 | **CyberShield** (`cybershield`) | `Cybershield-v1.zip` | v4.1 | Consultoria de privacidade e segurança digital organizada pelas camadas TCP/IP |
 | **DarkWeb Investigator** (`darkweb-investigator`) | `Darkweb investigator-v1.zip` | v4.1 | Investigação de crimes na deep/dark web: análise, atribuição, enquadramento penal e relatório |
 | **Investigative Notebook** (`investigative-notebook`) | `Investigative notebook-v3.zip` | — | Caderno de análise de vínculos no estilo i2: entidades, grafo, timeline, mapa, hipóteses e relatório |
@@ -13,6 +13,7 @@ Este guia explica como usar, no Claude, as nove skills instaladas a partir dos p
 | **PhishGuard360** (`phishguard360`) | `Phishguard360-v1.zip` | v2.2 | Análise de e-mail, SMS e URL suspeitos, treinamento antiphishing e programas corporativos |
 | **Redator Inteligente** (`redator-inteligente`) | `Redator inteligente-v2.zip` | 5.2 | Revisão e reescrita de textos em português com intervenção proporcional ao pedido |
 | **Sistema Pericial ALPR** (`sistema-pericial-alpr`) | `Sistema pericial alpr-v2.zip` | v4.4 | Leitura de placas veiculares brasileiras, sinais de adulteração e laudo estruturado |
+| **SOCMINT** (`socmint`) | — | — | Investigação e preservação de perfis, posts, canais e grupos em redes sociais, com cadeia de custódia e relatório Observação/Inferência/Desconhecido |
 
 ---
 
@@ -21,7 +22,7 @@ Este guia explica como usar, no Claude, as nove skills instaladas a partir dos p
 1. [Como as skills funcionam no Claude](#1-como-as-skills-funcionam-no-claude)
 2. [Princípios comuns a todas](#2-princípios-comuns-a-todas)
 3. [Qual skill usar?](#3-qual-skill-usar)
-4. [Análise IP](#4-análise-ip)
+4. [Análise IP Intelligence](#4-análise-ip-intelligence)
 5. [Crypto Investigator](#5-crypto-investigator)
 6. [CyberShield](#6-cybershield)
 7. [DarkWeb Investigator](#7-darkweb-investigator)
@@ -30,15 +31,16 @@ Este guia explica como usar, no Claude, as nove skills instaladas a partir dos p
 10. [PhishGuard360](#10-phishguard360)
 11. [Redator Inteligente](#11-redator-inteligente)
 12. [Sistema Pericial ALPR](#12-sistema-pericial-alpr)
-13. [Fluxos combinados](#13-fluxos-combinados)
-14. [Boas práticas com dados de caso real](#14-boas-práticas-com-dados-de-caso-real)
-15. [Solução de problemas](#15-solução-de-problemas)
+13. [SOCMINT](#13-socmint)
+14. [Fluxos combinados](#14-fluxos-combinados)
+15. [Boas práticas com dados de caso real](#15-boas-práticas-com-dados-de-caso-real)
+16. [Solução de problemas](#16-solução-de-problemas)
 
 ---
 
 ## 1. Como as skills funcionam no Claude
 
-**Acionamento automático.** Cada skill tem uma descrição. Quando o pedido combina com ela, o Claude carrega a skill sozinho — não é preciso citar o nome. "Analise este IP: 203.0.113.10" já aciona a Análise IP; "revisa este parágrafo" aciona o Redator Inteligente.
+**Acionamento automático.** Cada skill tem uma descrição. Quando o pedido combina com ela, o Claude carrega a skill sozinho — não é preciso citar o nome. "Analise este IP: 203.0.113.10" já aciona a Análise IP Intelligence; "revisa este parágrafo" aciona o Redator Inteligente.
 
 **Acionamento pelo nome.** Se a skill não entrou em ação ou se o pedido se encaixa em mais de uma, peça explicitamente: *"Use a skill phishguard360 para analisar este e-mail"*.
 
@@ -46,9 +48,9 @@ Este guia explica como usar, no Claude, as nove skills instaladas a partir dos p
 
 **Calibração de nível.** CyberShield, DarkWeb, Crypto, OPSEC e PhishGuard ajustam linguagem e profundidade ao seu nível (iniciante, intermediário, avançado). Se quiser pular a pergunta inicial, diga logo no pedido: *"nível avançado, sem analogias"*.
 
-**Arquivos.** Anexe à conversa o material de trabalho (imagens, PDF, DOCX, CSV, XLSX, logs). As skills com scripts (Análise IP e Investigative Notebook) processam os arquivos por código; as demais analisam o conteúdo diretamente.
+**Arquivos.** Anexe à conversa o material de trabalho (imagens, PDF, DOCX, CSV, XLSX, logs). As skills com scripts (Análise IP Intelligence, Crypto Investigator, SOCMINT e Investigative Notebook) processam os arquivos por código; as demais analisam o conteúdo diretamente.
 
-**O que nenhuma delas faz.** Nenhuma skill acessa a dark web, consulta blockchains em tempo real, consulta bases restritas (SINESP, DETRAN, cadastros policiais) ou executa varreduras ativas contra alvos. Quando o dado não está no que você enviou, a skill orienta onde e como obtê-lo.
+**O que nenhuma delas faz.** Nenhuma skill acessa a dark web, consulta bases restritas (SINESP, DETRAN, cadastros policiais), entra em contas de redes sociais ou executa varreduras ativas contra alvos. Consulta em tempo real só existe em dois casos: a coleta passiva de fontes públicas da Análise IP Intelligence e a consulta a blockchains do Crypto Investigator, que só acontece depois do seu consentimento explícito (Ação 12). Quando o dado não está no que você enviou, a skill orienta onde e como obtê-lo.
 
 ---
 
@@ -72,8 +74,8 @@ Algumas skills se sobrepõem. Use esta tabela para escolher:
 
 | Situação | Skill indicada | Por quê |
 |---|---|---|
-| Um ou mais IPs, ASN, prefixo, PTR, Tor/VPN, logs de acesso | **Análise IP** | Coleta passiva, correlação e relatório forense de infraestrutura |
-| Endereço ou hash de transação de cripto, rastreamento de fundos, apreensão | **Crypto Investigator** | Especializada em UTXO/EVM, bridges, mixers e persecução patrimonial |
+| Um ou mais IPs, ASN, prefixo, PTR, Tor/VPN, logs de acesso, IP privado, cabeçalho de e-mail | **Análise IP Intelligence** | Coleta passiva, tipologia do IP, prazos de guarda, correlação e relatório forense de infraestrutura |
+| Endereço ou hash de transação de cripto, rastreamento de fundos, apreensão | **Crypto Investigator** | Especializada em UTXO/EVM, bridges, mixers, atribuição e persecução patrimonial |
 | Marketplace, fórum, vendedor ou denúncia ligada à dark web | **DarkWeb Investigator** | Atribuição, enquadramento penal, OPSEC do investigador e cooperação internacional |
 | Montar o caso com várias fontes (BO, extratos, ERB, depoimentos) e ver vínculos | **Investigative Notebook** | Integra tudo num caso rastreável com grafo, timeline, mapa e relatório |
 | E-mail, SMS, WhatsApp, URL ou ligação suspeita | **PhishGuard360** | Análise do artefato com mascaramento da vítima e encaminhamento |
@@ -81,16 +83,19 @@ Algumas skills se sobrepõem. Use esta tabela para escolher:
 | Proteção em contexto de risco: stalking, campo, forense, empresa, conta invadida agora | **OPSEC Specialist** | Parte do modelo de ameaça e tem subperfis para situações de risco real |
 | Foto de veículo ou placa | **Sistema Pericial ALPR** | Leitura caractere a caractere, adulteração e laudo |
 | Revisar relatório, ofício, despacho, artigo, e-mail | **Redator Inteligente** | Corrige sem alterar sentido, modalizadores ou identificadores |
+| Perfil, post, canal, grupo ou golpe em rede social; preservar conteúdo como prova; datar post ou conta pelo ID | **SOCMINT** | Gate legal e ético, preservação com hash e cadeia de custódia, decodificação de IDs e relatório Observação/Inferência/Desconhecido |
 
 **CyberShield × OPSEC Specialist:** o CyberShield é o consultor de ferramentas e hardening (o *quê* instalar e configurar, camada por camada). O OPSEC Specialist é o consultor de conduta e risco (de *quem* você se protege e em que ordem agir), e é o indicado para perseguição, violência doméstica, operações de campo e incidente em andamento.
 
+**SOCMINT × social-media-intelligence:** o SOCMINT é o método de investigação e preservação em redes sociais (gate, playbook por plataforma, IDs, evidências, relatório). Para apenas *achar e classificar* os perfis de um alvo a partir de um username em várias plataformas, a skill indicada é a `social-media-intelligence` (veja o ecossistema do Investigative Notebook, na seção 8).
+
 ---
 
-## 4. Análise IP
+## 4. Análise IP Intelligence
 
-**O que faz.** Analisa endereços IPv4/IPv6 respondendo não só "de quem é este IP?", mas o que se pode afirmar tecnicamente sobre ele, qual infraestrutura está associada, com que confiabilidade e quais dados faltam para uma atribuição. Cobre RDAP, ASN/BGP, DNS/PTR, geolocalização comparada, VPN/proxy/Tor, cloud/datacenter, reputação, certificados, histórico e correlação entre vários IPs.
+**O que faz.** Analisa endereços IPv4/IPv6 de qualquer provedor, no Brasil ou no exterior, respondendo não só "de quem é este IP?", mas o que se pode afirmar tecnicamente sobre ele, qual infraestrutura está associada, com que confiabilidade e quais dados faltam para uma atribuição. Cobre RDAP, ASN/BGP, DNS/PTR, geolocalização comparada, VPN/proxy/Tor (inclusive consulta ao proxycheck.io), cloud/datacenter, reputação, certificados, histórico e correlação entre vários IPs. Também responde **"que tipo de IP é esse?"** (residencial, móvel, corporativo, datacenter, VPN, proxy, Tor, CDN, IP privado ou CGNAT) e **"dá para descobrir quem está por trás?"**, com o roteiro investigativo de cada tipo.
 
-**Quando usar.** IPs isolados, listas de IPs, logs de acesso, registros de provedor, pedidos de relatório técnico sobre IP, ou quando você quiser construir uma plataforma de análise de IP.
+**Quando usar.** IPs isolados, listas de IPs, logs de acesso, registros de provedor, cabeçalhos de e-mail, IP privado lido em print ou log, pedidos de relatório técnico sobre IP, dúvidas sobre prazo de guarda e minuta de ofício, ou quando você quiser construir uma plataforma de análise de IP.
 
 ### Modos de operação
 
@@ -105,6 +110,10 @@ O modo é escolhido automaticamente pela entrada, mas você pode fixá-lo escrev
 | `ANALISE_DE_INFRAESTRUTURA` | Quem anuncia, ASN, prefixo, tipo de rede (residencial, móvel, cloud, CDN, VPN, Tor) | Perguntas sobre ASN/BGP |
 | `ANALISE_TEMPORAL` | Linha do tempo de ASN, ISP, prefixo, PTR, domínios e reputação | Perguntas com datas ou histórico |
 | `RELATORIO_FORENSE` | Documento técnico em 11 blocos | Pedido de relatório |
+| `TIPOLOGIA_DO_IP` | Tipo do IP, roteiro investigativo, cadeia de atribuição e dados que faltam | "Que tipo de IP é esse?", "dá para descobrir quem?" |
+| `IP_NAO_PUBLICO` | Privado, CGNAT, loopback, documentação…: explicação e busca do elo público, **sem consulta externa** | IP não público |
+| `ANALISE_DE_CABECALHO` | Cabeçalho de e-mail (`Received`) e `X-Forwarded-For`, com fronteira de confiança | Cabeçalho colado ou arquivo `.eml` |
+| `PRESERVACAO_E_OFICIO` | Prazos de guarda do provedor e minuta de ofício (preservação, cadastral ou representação) | "Quanto tempo o provedor guarda?", "faz o ofício" |
 
 Comandos conceituais que você pode escrever dentro do pedido: `/analisar`, `/triagem`, `/correlacionar`, `/comparar <IP1> <IP2>`, `/histórico <IP>`, `/timeline`, `/pivô <indicador>`, `/clusters`, `/outliers`, `/hipóteses`, `/testar-hipótese`, `/o-que-falta`, `/próximo-passo`, `/relatório`, `/exportar-grafo`, `/exportar-caso`.
 
@@ -129,11 +138,29 @@ Correlacione estes IPs com os eventos do caso:
 203.0.113.80 — acesso ao e-mail em 03/10/2026 19:40
 ```
 
+```
+Que tipo de IP é 203.0.113.45? Dá para descobrir quem está por trás?
+```
+
+```
+O IP 192.168.0.15 apareceu no print do Wi-Fi da vítima. É o IP do suspeito?
+```
+
+```
+Quanto tempo o provedor guarda o registro deste acesso (14/09/2026 22:41:07,
+America/Maceio)? Já venceu? Faça a minuta do ofício de preservação.
+```
+
+Para a atribuição ser possível, informe (ou diga que não tem): **data e hora do fato com segundos e fuso** (Sergipe: `America/Maceio`), **onde o IP apareceu** (log web, e-mail, firewall, print de Wi-Fi, câmera…) e **a porta, indicando se é de origem ou de destino**. Sem o fuso, a skill não converte para UTC nem calcula prazo: ela pergunta. Em CGNAT, sem a porta de origem o IP sozinho não individualiza a conexão.
+
 ### O que entrega
 
 - Análise em 16 blocos (identificação, RDAP, BGP/ASN, DNS, domínios, geolocalização, VPN/Tor, hospedagem, reputação, serviços, certificados, histórico, correlações, avaliação, conclusão).
 - **"O que pode e o que não pode ser atribuído"**, matriz de evidências, quadros **"O que sabemos / O que não sabemos"**.
 - **Dados necessários para atribuição** (IP, data, hora com segundos, fuso, porta de origem, protocolo), indicando o que existe e o que falta — e o alerta de CGNAT quando cabível.
+- **"Classificação do IP e caminho investigativo"** (bloco obrigatório em toda análise de IP concreto): tipo provável na escala *Não identificado · Possível · Provável · Confirmado*, outros papéis possíveis (ex.: VPN sobre datacenter), anonimização, quem detém o dado, caminho a seguir, viabilidade de chegar ao titular da conexão e ao usuário, e sinais contraditórios declarados como hipóteses concorrentes, nunca escolhidos em silêncio.
+- **Prazo de guarda** do provedor (VENCIDO · URGENTE · ATENÇÃO · OK; no Brasil, 12 meses para conexão e 6 para aplicação). Se não estiver OK, a skill diz isso primeiro, antes da análise, porque a prioridade é a preservação.
+- Sob pedido, **minuta de ofício** (preservação, cadastral ou representação, com pendências `[PREENCHER]`) e análise de **cabeçalho de e-mail**.
 - Próximo melhor passo (1 a 3 prioridades, sem medidas invasivas) e fontes com URL e data/hora da consulta.
 - Com 2+ IPs: matriz de similaridade explicável, clusters, hubs, outliers e exportação do caso (`case.json`, CSVs, `graph.graphml` para Gephi/Cytoscape/Neo4j).
 
@@ -143,15 +170,19 @@ Correlacione estes IPs com os eventos do caso:
 - **IP não é pessoa.** A skill nunca conclui que alguém usou o IP apenas pelo endereço; considera NAT, CGNAT, Wi-Fi compartilhado, VPN, proxy, Tor e IP dinâmico.
 - Geolocalização de IP é estimativa, não prova de localização física.
 - Em consultas externas, só o indicador é enviado — nunca o contexto do caso, nomes ou vítimas.
-- Quando o ambiente não tem acesso de rede para o script de coleta, a skill recorre à leitura web das mesmas fontes e registra o resultado no mesmo formato; fonte indisponível vira lacuna declarada.
+- Quando o ambiente não tem acesso de rede para o script de coleta, a skill recorre à leitura web das mesmas fontes e registra o resultado no mesmo formato; fonte indisponível vira lacuna declarada. Nesse caso a evidência fica **não preservada** e "Confirmado" cai para "Provável"; em caso real, refaça a coleta no modo local (no computador do analista), que preserva cada resposta com URL, data/hora e SHA-256.
+- **Tipo de IP é indício, nunca prova de autoria.** "Confirmado" só com fonte primária preservada (lista oficial do provedor, ExoneraTor, faixa IANA); base comercial, como o proxycheck.io, chega no máximo a "Provável", e a resposta "não é VPN" de uma base não prova que não havia VPN. O proxycheck.io tem cota diária (100 consultas sem chave); o que não couber vira lacuna declarada.
+- **IP privado não é consultado externamente nem atribuído.** Ele não tem titular, ASN, geolocalização nem reputação: a skill explica a faixa, reconstitui o contexto de rede e busca o IP público do mesmo instante. Nunca correlaciona casos ou pessoas por IP privado isolado.
+- **Fora do Brasil, não presume o prazo do Marco Civil.** O país do bloco (RDAP) é indício, não a lei aplicável: a skill devolve prazo "desconhecido", orienta a preservação expedita e a cooperação internacional.
+- A minuta de ofício é rascunho com pendências: a autoridade revisa, completa e assina; ela não substitui a análise jurídica.
 
 ---
 
 ## 5. Crypto Investigator
 
-**O que faz.** Orienta a investigação forense de criptoativos: rastreamento em blockchains UTXO (Bitcoin, Litecoin) e baseadas em contas (Ethereum e redes EVM), multi-hop e cross-chain, golpes, contratos e tokens, preservação de prova on-chain e busca, apreensão e destinação de criptoativos no contexto brasileiro.
+**O que faz.** Orienta a investigação forense de criptoativos: rastreamento em blockchains UTXO (Bitcoin, Litecoin) e baseadas em contas (Ethereum e redes EVM), multi-hop e cross-chain, golpes, contratos e tokens, preservação de prova on-chain, atribuição (o que pedir a cada provedor para chegar ao titular) e busca, apreensão e destinação de criptoativos no contexto brasileiro.
 
-**Como ela trabalha.** A skill **não acessa blockchains**. Ela identifica a rede, diz exatamente qual explorer abrir, quais abas consultar e o que copiar — e analisa os dados que você trouxer. Se você anexar o CSV exportado do explorer, ela processa o arquivo por código (totais, contrapartes, linha do tempo) em vez de estimar.
+**Como ela trabalha.** A skill **não acessa blockchains por conta própria**. Ela identifica a rede, diz exatamente qual explorer abrir, quais abas consultar e o que copiar — e analisa os dados que você trouxer. Se você anexar o CSV exportado do explorer, ela processa o arquivo por código (totais por ativo, contrapartes, horários, consolidações, fan-in/fan-out, poeira e envenenamento de endereço) em vez de estimar. Endereços, hashes e checksums também são validados por script, nunca "de memória". A consulta ao vivo é a exceção, vem desligada e só ocorre na Ação 12, depois que você consente informando destino, dado revelado e finalidade.
 
 ### Menu de ações
 
@@ -163,10 +194,12 @@ Correlacione estes IPs com os eventos do caso:
 | 4 | Explicações técnicas | Conceito → funcionamento → relevância investigativa → exemplo |
 | 5 | Simulação de investigação | Cenários fictícios com gabarito (BTC, DeFi, bridge, rug pull, mixer, stablecoin, NFT) |
 | 6 | Smart contracts e tokens | Análise de contratos e tokens |
-| 7 | Golpes e esquemas | Catálogo de golpes com padrão on-chain e como investigar |
+| 7 | Golpes e esquemas | Catálogo de golpes com padrão on-chain e como investigar, com cruzamento de endereços com sanções (OFAC e UE, com a data da consulta) |
 | 8 | Busca, apreensão e destinação (Brasil) | Fluxo de localização, apreensão, custódia e alienação |
-| 9 | Preservação de prova on-chain | Cadeia de custódia para capturas e exportações do explorer |
+| 9 | Preservação de prova on-chain | Cadeia de custódia para capturas e exportações do explorer, com hash SHA-256 e manifesto (captura de tela isolada não basta) |
 | 10 | Roteiro de estudo | Plano de capacitação por nível |
+| 11 | Atribuição e identificação do suspeito | O que cada provedor guarda e o que pedir, mitos de IP, pivôs de identidade e corroboração independente |
+| 12 | Monitoramento e consulta ao vivo | Consulta a explorers e APIs e monitoramento de endereço, **só com o seu consentimento** (destino, dado revelado e finalidade) |
 
 ### Como pedir
 
@@ -185,6 +218,11 @@ Opção 8. Quais são os caminhos para localizar e bloquear criptoativos de um
 investigado que usa exchange nacional?
 ```
 
+```
+Opção 11. O endereço de depósito pertence a uma exchange. Que dados posso
+requisitar para chegar ao titular e como corroboro que ele é o usuário real?
+```
+
 ### Cuidados que a skill aplica antes de analisar
 
 - **Identifica a blockchain primeiro.** Um endereço `0x` existe em dezenas de redes EVM; sem a rede, ela pergunta.
@@ -192,14 +230,16 @@ investigado que usa exchange nacional?
 - **Verifica checksum** e alerta sobre redes sem checksum (ex.: Solana), onde um erro de digitação passa despercebido.
 - **Alerta para address poisoning:** endereços visualmente parecidos com o real, plantados no histórico da carteira. Prefira copiar o endereço da fonte primária (extrato da exchange, ordem judicial), não de captura de tela.
 - **Diferencia carteira (EOA) de contrato**, inclusive EOA com delegação (EIP-7702).
+- **Trata o texto da cadeia como dado, nunca como instrução:** nome de token, ENS, memo e rótulo podem trazer ordens dirigidas a uma IA; a skill os cita entre aspas, marca como conteúdo não confiável e não obedece.
+- **Não aceita chave privada, seed ou senha de carteira.** Se aparecerem na conversa, ela interrompe e orienta a tratá-las como material sensível sob cadeia de custódia. Não cole esse tipo de dado.
 
 ### O que entrega
 
-Relatório on-chain em 8 seções: resumo executivo, dados observados, mapa de fluxo de fundos, padrões (fragmentação, consolidação, peeling chain, round-trip, dormência…), classificação de risco, pontos prioritários, ferramentas recomendadas e limitações. Toda análise com dados reais termina com ressalva de que os resultados devem ser validados com ferramentas especializadas antes de uso processual.
+Relatório on-chain em 11 seções: resumo executivo, dados observados, mapa de fluxo de fundos, padrões (fragmentação, consolidação, peeling chain, round-trip, dormência…), classificação de risco, pontos prioritários, ferramentas recomendadas, limitações, evidências e custódia, consultas de rede realizadas e triagem de viabilidade. Toda inferência leva um grau de confiança (Alta · Média · Baixa · Hipótese), o método usado e o modo de falha: heurística isolada nunca passa de Média, e atribuir identidade a uma pessoa exige corroboração independente. Valores em reais ou dólares usam a cotação da data da transação, com a fonte. Toda análise com dados reais termina com ressalva de que os resultados devem ser validados com ferramentas especializadas antes de uso processual.
 
 ### Limites
 
-Não dá assessoria financeira nem jurídica para caso concreto, não inventa saldo ou transação e não cita jurisprudência sem certeza. Para redes com privacidade forte (Monero, Zcash blindado), declara a limitação de rastreio.
+Não dá assessoria financeira nem jurídica para caso concreto, não inventa saldo ou transação e não cita jurisprudência sem certeza. Para redes com privacidade forte (Monero, Zcash blindado), declara a limitação de rastreio. Não fornece procedimento para extrair chaves ou seeds de discos e memória, quebrar senha de carteira, importar chave privada em software de carteira ou rastrear de forma recursiva e autônoma; nesses casos oferece o procedimento lícito (reconhecer, preservar, acionar o perito e documentar).
 
 ---
 
@@ -383,7 +423,7 @@ O Notebook é a camada de gestão e visualização do caso. As demais skills de 
 | | `case-correlation` | Conexões com outras investigações |
 | Raciocínio | `hypothesis-engine` | Resumo, hipóteses, matriz ACH e próximas verificações |
 
-Integrações com as skills deste guia: IPs, ASN e domínios → **Análise IP**; criptoativos → **Crypto Investigator**; revisão do texto do relatório → **Redator Inteligente**. Os resultados entram no caso como `nao_verificado`, com o registro da consulta.
+Integrações com as skills deste guia: IPs, ASN e domínios → **Análise IP Intelligence**; criptoativos → **Crypto Investigator**; perfis, posts e canais de redes sociais → **SOCMINT** (exporta um bundle para o caso); revisão do texto do relatório → **Redator Inteligente**. Os resultados entram no caso como `nao_verificado`, com o registro da consulta.
 
 ---
 
@@ -589,13 +629,82 @@ Não identifica proprietário, condutor ou passageiros; não sugere consulta a S
 
 ---
 
-## 13. Fluxos combinados
+## 13. SOCMINT
+
+**O que faz.** Método para investigar e preservar perfis, posts, canais, grupos, servidores e campanhas em redes sociais (Instagram, Facebook, Threads, WhatsApp, Telegram, Discord, TikTok, Kwai, Reddit, X, YouTube, LinkedIn, Bluesky/Mastodon). É uma skill de **método, não de acesso**: ela orienta, analisa e documenta; a coleta é manual, feita por você, e a skill trabalha sobre o que você fornecer (URLs, prints, HTML/JSON, CSV/XLSX). Há um playbook para cada uma dessas plataformas, com identificadores, pivôs e o que não fazer.
+
+**Quando usar.** Investigar conta, canal, grupo ou golpe em rede social; datar um post ou uma conta pelo ID; preservar conteúdo como prova; analisar comportamento coordenado em comentários e seguidores; redigir relatório SOCMINT. Para apenas *achar e classificar* os perfis de um alvo a partir de um username, o caminho é a skill `social-media-intelligence` (seção 8).
+
+### Fluxo ODPAR
+
+O trabalho segue cinco etapas, sem ordem rígida: volta-se a uma etapa quando a verificação descarta algo.
+
+| Etapa | O que acontece |
+|---|---|
+| **O**rganizar | Gate legal e ético, objetivo, hipóteses, plano de coleta, nível (1 triagem · 2 padrão · 3 formal) e OPSEC do ambiente |
+| **D**ocumentar | **Preservar antes de pivotar**: URL, HTML/JSON, captura, mídia, hash e registro no log de evidências |
+| **P**ivotar | Expandir a partir de um achado, registrando de → para, técnica, resultado e confiança |
+| **A**nalisar | Verificar, corroborar, linha do tempo, grafo e indicadores de coordenação |
+| **R**elatar | Observação / Inferência / Desconhecido, evidências com hash e limitações |
+
+Se você não indicar o nível, a skill propõe o 2 e explica a diferença em uma linha.
+
+### Gate: antes de coletar sobre pessoa física
+
+Antes de seguir, a skill pergunta ou confirma: qual é a **pergunta de investigação** (específica e verificável); qual o **contexto e a autorização** (ofício, procedimento policial, contrato, pesquisa, treino); qual a **categoria do alvo** (organização, figura pública no papel público, ator de ameaça, pessoa privada, menor, vítima, denunciante ou jornalista); quais dados são **estritamente necessários**; e se a coleta é **passiva ou ativa**. O resultado é seguir, seguir com restrições ou recusar e redirecionar, sempre com uma alternativa lícita.
+
+### Como pedir
+
+```
+Investigo um golpe de falso leilão divulgado por um perfil no Instagram
+(procedimento IP 0000/2026). Faça a triagem: gate, plano de coleta e o que
+preservar primeiro.
+```
+
+```
+Qual a data de criação deste vídeo do TikTok? ID: 7598746068280495381.
+Fuso do caso: America/Maceio.
+```
+
+```
+Anexei o CSV de comentários do post (comentarios.csv). Procure rajadas,
+textos repetidos e contas criadas em lote: só indicadores, sem veredito.
+```
+
+```
+Monte o relatório SOCMINT na variante policial com o log de evidências do caso
+e gere o bundle para o Investigative Notebook.
+```
+
+### O que entrega
+
+- **Triagem** em cinco partes: gate em 3 linhas, plano curto de coleta, o que preservar primeiro, os três primeiros pivôs e o que a skill precisa de você.
+- **Log de evidências** com hash encadeado e cadeia de custódia: cada arquivo preservado recebe um ID (`EV-0001`), SHA-256, URL, hora da coleta e ambiente usado; a integridade pode ser verificada depois e o log exporta `SHA256SUMS`.
+- **Decodificação de IDs e datas** que a plataforma embute no identificador (Discord, TikTok, Instagram/Threads, X e Bluesky, conforme o tipo de objeto), com UTC primeiro e o fuso do caso entre parênteses (Sergipe: `America/Maceio`). O **ID estável** é preservado antes de tudo, porque o @ pode mudar.
+- **Dorks** por plataforma e **variações de username**.
+- **Análise de exports** de comentários e seguidores (CSV/XLSX): rajadas, textos repetidos e criação de contas em lote, sempre como **indicadores, nunca como veredito** de bot ou de coordenação.
+- **Grafo de vínculos** e **atribuição de identidade** em quatro classes: Confirmado · Provável · Possível · Não confirmado. "Confirmado" exige ao menos um sinal forte e outro sinal independente; reuso de username isolado nunca passa de Possível.
+- **Relatório** com Observação, Inferência (com confiança baixa, moderada ou alta) e Desconhecido, achados ligados às evidências por ID e e-mails, telefones e IDs de terceiros mascarados; há **variante policial**. Antes de entregar, a skill confere a cadeia de hashes e se todo achado cita uma evidência que existe.
+- **Exportação para o Investigative Notebook**, que integra o resultado ao caso.
+
+### Limites
+
+- **Evidência é a captura que você faz**, não o que a skill vê. O que ela obtiver por busca web ou navegador é orientação, não evidência: passa por terceiros e não tem hash da origem. Não abra o perfil-alvo no seu navegador logado pessoal (visitas a perfis e stories podem ficar registradas na conta); use um perfil de navegador dedicado à investigação.
+- Não acessa contas logadas, não contorna controles de privacidade e **não pede** `api_id`, tokens ou chaves no chat.
+- **Recusados mesmo com autorização declarada:** localizar endereço, rotina ou posição de pessoa privada; acessar contas, dispositivos ou mensagens de terceiros; desanonimizar crítico, denunciante, jornalista ou vítima; processar material de abuso sexual infantil (a skill orienta a denúncia); fabricar identidade, documento, print ou conversa; operar redes de perfis falsos; usar bases vazadas para identificar pessoa física; infiltração enganosa em grupos criminosos por particular.
+- Técnicas sensíveis (contas falsas de investigação, números virtuais, perfis privados, vazamentos, infiltração) recebem só o conceito, o risco, o enquadramento legal e a alternativa lícita, **sem passo a passo** de evasão ou burla.
+- Itens das referências marcados como voláteis (interface, endpoints e regras das plataformas) só valem com a data da verificação; a data de revisão do arquivo não conta como verificação.
+- Não é aconselhamento jurídico: confira as normas citadas no texto vigente.
+
+---
+
+## 14. Fluxos combinados
 
 As skills foram desenhadas para trabalhar juntas. Alguns roteiros:
 
 **Golpe com Pix a partir de SMS ou e-mail**
 1. **PhishGuard360** analisa a mensagem e lista as ações imediatas da vítima (incluindo o MED do Pix).
-2. **Análise IP** examina os IPs do log de acesso ou dos cabeçalhos do e-mail e lista os dados necessários para atribuição.
+2. **Análise IP Intelligence** examina os IPs do log de acesso ou dos cabeçalhos do e-mail e lista os dados necessários para atribuição.
 3. **Investigative Notebook** integra BO, extrato e resultados num caso com grafo e timeline.
 4. **Redator Inteligente** revisa o relatório final em grau mínimo.
 
@@ -608,24 +717,30 @@ As skills foram desenhadas para trabalhar juntas. Alguns roteiros:
 1. **Sistema Pericial ALPR** lê a placa em cada captura e consolida as leituras.
 2. **Investigative Notebook** registra a leitura como observação vinculada à evidência (o frame, com hash) e cruza com eventos e localizações do caso.
 
+**Perfil falso ou golpe divulgado em rede social**
+1. **SOCMINT** aplica o gate, preserva perfil e posts (ID estável, hash, log de evidências), data conta e postagens pelo ID e analisa comentários e seguidores em busca de indicadores de coordenação.
+2. **Crypto Investigator** (carteiras citadas no perfil ou nos posts) e **Análise IP Intelligence** (IPs que vierem nos registros devolvidos pela plataforma) seguem os pivôs encontrados.
+3. **Investigative Notebook** recebe o bundle do SOCMINT e cruza com BO, extratos e demais fontes.
+4. **Redator Inteligente** revisa o relatório final em grau mínimo.
+
 **Proteção da equipe ou de uma vítima**
 - **OPSEC Specialist** monta o modelo de ameaça e a ordem de ação.
 - **CyberShield** detalha e compara as ferramentas escolhidas, camada por camada.
 
 ---
 
-## 14. Boas práticas com dados de caso real
+## 15. Boas práticas com dados de caso real
 
 - **Minimize.** Envie apenas o necessário para a análise. Quando o nome da vítima não for relevante, substitua por "Vítima 1".
 - **Preserve antes de analisar.** Calcule o hash dos arquivos originais e trabalhe sobre cópias; o Investigative Notebook faz isso ao registrar evidências.
 - **Não publique.** Resultados de caso real devem circular como arquivos, não como páginas com link.
-- **Consultas externas revelam interesse.** Consultar um indicador num serviço de terceiros registra que alguém o consultou. A Análise IP envia só o indicador, mas avalie a OPSEC antes de autorizar consultas.
+- **Consultas externas revelam interesse.** Consultar um indicador num serviço de terceiros registra que alguém o consultou. A Análise IP Intelligence envia só o indicador, mas avalie a OPSEC antes de autorizar consultas.
 - **Confirme o que mudou.** Explorers, ferramentas, sanções e normas mudam. As skills sinalizam isso, mas valide o estado atual antes de citar algo como vigente em documento oficial.
 - **Revisão humana sempre.** Toda saída é apoio à análise; a conclusão e a responsabilidade são do analista e da autoridade.
 
 ---
 
-## 15. Solução de problemas
+## 16. Solução de problemas
 
 | Problema | O que fazer |
 |---|---|
@@ -633,8 +748,10 @@ As skills foram desenhadas para trabalhar juntas. Alguns roteiros:
 | Entrou a skill errada (ex.: CyberShield em vez de OPSEC) | Diga qual quer; consulte a seção [Qual skill usar?](#3-qual-skill-usar) |
 | Resposta muito básica ou muito técnica | Declare o nível: *"nível avançado"* ou *"explique para leigo"* |
 | O Redator mudou mais do que você queria | Diga *"só erros, não mexe no estilo"* — vale para o resto da conversa |
-| A Análise IP não conseguiu consultar as fontes | Sem rede no ambiente, a skill usa leitura web; fontes indisponíveis aparecem como lacunas, não como dado |
-| O Crypto Investigator pede dados em vez de analisar | Ele não acessa blockchains: siga o roteiro de coleta no explorer ou anexe o CSV exportado |
+| A Análise IP Intelligence não conseguiu consultar as fontes | Sem rede no ambiente, a skill usa leitura web; fontes indisponíveis aparecem como lacunas, não como dado, e "Confirmado" cai para "Provável" |
+| A Análise IP Intelligence não calculou o prazo nem gerou o ofício | Informe data e hora do fato com segundos e fuso (ex.: `America/Maceio`); sem fuso ela pergunta em vez de converter |
+| O Crypto Investigator pede dados em vez de analisar | Ele não acessa blockchains por conta própria: siga o roteiro de coleta no explorer, anexe o CSV exportado ou autorize expressamente a consulta ao vivo (Ação 12) |
+| O SOCMINT pediu justificativa ou recusou antes de coletar | Ele aplica um gate legal e ético: informe a pergunta de investigação, o contexto/autorização e a categoria do alvo. Localizar endereço ou rotina de pessoa privada, acessar contas de terceiros e desanonimizar denunciante, jornalista ou vítima são recusados mesmo com autorização |
 | O ALPR não emitiu laudo | Ele exige imagem; descrição em texto de uma placa não basta |
 | O visualizador do Notebook não mostra o mapa de ruas | Por sigilo, ele pode ter sido gerado sem buscar mapas online — nesse caso aparece um esquema local. Se o sigilo permitir, peça a versão com mapa online |
 | Quer continuar um caso depois | Guarde o `caso.json` (ou o JSON salvo pelo visualizador) e envie-o numa nova conversa |
